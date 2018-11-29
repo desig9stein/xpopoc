@@ -1,29 +1,30 @@
 import { NgModule } from '@angular/core';
-import { FormsModule } from '@angular/forms';
-import { AppRoutingModule } from './app-routing.module';
 import { BrowserModule } from '@angular/platform-browser';
+import { AppRoutingModule } from './app-routing.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { IgxNavigationDrawerModule, IgxNavbarModule, IgxLayoutModule, IgxRippleModule } from 'igniteui-angular';
+import { FormsModule } from '@angular/forms';
 
-import { AppComponent } from './app.component';
-import { HomeComponent } from './home/home.component';
+import { IgxRippleModule, IgxListModule, IgxIconModule, IgxInputGroupModule, IgxFilterModule, IgxCheckboxModule, IgxButtonModule } from 'igniteui-angular';
+
+import { LoadsComponent } from './loads.component';
+import { PagerComponent } from './pager/pager.component';
+import { DataService } from './services/dataService';
 
 @NgModule({
-  declarations: [
-    AppComponent,
-    HomeComponent
-],
-imports: [
+  imports:      [
     FormsModule,
     BrowserModule,
     BrowserAnimationsModule,
     AppRoutingModule,
-    IgxNavigationDrawerModule,
-    IgxNavbarModule,
-    IgxLayoutModule,
-    IgxRippleModule
-  ],
-  providers: [],
-  bootstrap: [AppComponent]
+    IgxRippleModule,
+    IgxListModule,
+    IgxCheckboxModule,
+    IgxFilterModule,
+    IgxButtonModule,
+    IgxIconModule,
+    IgxInputGroupModule, ],
+  declarations: [LoadsComponent, PagerComponent ],
+  providers: [DataService],
+  bootstrap:    [ LoadsComponent ]
 })
 export class AppModule { }

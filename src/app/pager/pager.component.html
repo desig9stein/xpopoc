@@ -1,0 +1,4 @@
+
+<div class="paginator">
+    <button *ngFor="let val of [1, 2, 3, 4, '...', 6]; let i = index" (click)="paginate($event, i)" igxButton="icon" igxRipple igxRippleCentered="true">{{ i + 1 }}</button>
+</div>

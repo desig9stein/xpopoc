@@ -1,0 +1,97 @@
+@import url("https://unpkg.com/@fortawesome/fontawesome-free-webfonts@^1.0.9/css/fontawesome.css");
+@import url("https://unpkg.com/@fortawesome/fontawesome-free-webfonts@^1.0.9/css/fa-regular.css");
+@import url("https://unpkg.com/@fortawesome/fontawesome-free-webfonts@^1.0.9/css/fa-solid.css");
+
+@import '~igniteui-angular/lib/core/styles/themes/index';
+@import '~igniteui-angular/lib/core/styles/themes/utilities';
+
+:host ::ng-deep {
+  $grey: grey;
+  
+  .sample-wrapper {
+    width: 80%;
+    height: 100%;
+    margin: 1px;
+    padding: 20px;
+    
+    div.list-wrapper {
+      background: white;
+      width: 100%;
+      color: $grey;
+      padding: 16px 24px;
+      box-shadow: 0 1px 5px 0 rgba(0,0,0,.26), 0 2px 2px 0 rgba(0,0,0,.12), 2px 3px 1px -2px rgba(0,0,0,.08);
+      border-radius: 2px;
+    } 
+  }
+
+  .toolbar-row {
+    .igx-input-group,
+    .igx-input-group--focused {
+      .igx-input-group__bundle {
+        transition: background 500ms ease-in-out;
+        padding-top: 0px;
+      }
+
+      max-width: 30%;
+      min-width: 20%;
+      font-size: 13px;
+      overflow: hidden;
+      flex: 1 1 auto;
+
+      igx-icon {
+        font-size: 1rem;
+        width: 1rem;
+        height: 1rem;
+      }
+    }
+  }
+
+  .item-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+  .center {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #999;
+    font-size: 24px;
+    height: 100%;
+  }
+
+  .item {
+    display: grid;
+    grid-row-gap: 5px;
+    padding: 10px;
+  }
+
+  div.item.orderid-item{
+    text-align: center;
+  }
+
+  .address-cell {
+    display: flex;
+    align-items: center;
+    height: 100%;
+  }
+
+  .availabilityButton {
+    background-color: orange;
+    border-radius: 12px;
+    border: none;
+    color: white;
+    padding: 6px;
+    text-align: center;
+    font-weight: 600;
+    display: inline-block;
+    cursor: pointer;
+  }
+
+  .available{
+    .availabilityButton {
+      background-color: #4CAF50;
+    }
+  }
+}
