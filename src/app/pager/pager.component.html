@@ -1,4 +1,22 @@
+<div class="list-sample-toolbar">
+    <div class="toolbar-row">
+      <igx-input-group>
+        <igx-prefix>
+            <igx-icon class="prefixIcon" *ngIf="searchText.length == 0">search</igx-icon>
+            <igx-icon class="prefixIcon" *ngIf="searchText.length > 0" (click)="clearSearch()">clear</igx-icon>
+          </igx-prefix>
+        <input class="listSample__filter" igxInput type="text" [(ngModel)]="searchText" placeholder="Search by Order Id/Location" (keyup)="onKeyUp($event, searchText)">
+      </igx-input-group>
+    </div>
 
-<div class="paginator">
-    <button *ngFor="let val of [1, 2, 3, 4, '...', 6]; let i = index" (click)="paginate($event, i)" igxButton="icon" igxRipple igxRippleCentered="true">{{ i + 1 }}</button>
+    <div class="toolbar-row">
+        <span class="">{{ totalCount }} Available Loads</span>       
+        <div class="paginator">
+            <ng-container *ngIf="pagerButtons.length > 1">
+                <button *ngFor="let button of pagerButtons; let i = index" (click)="paginate($event, i)" igxButton="icon" igxRipple igxRippleCentered="true"
+                    [ngClass]="{'selected' : index === i}">{{ i + 1 }}</button>
+            </ng-container>
+        </div>
+    </div>
+
 </div>

@@ -1,29 +1,14 @@
 <div class="sample-wrapper">
     <div class="list-wrapper">
-        <div class="list-sample-toolbar">
-            <div class="toolbar-row">
-              <igx-input-group>
-                <igx-prefix>
-                    <igx-icon class="prefixIcon" *ngIf="searchText.length == 0">search</igx-icon>
-                    <igx-icon class="prefixIcon" *ngIf="searchText.length > 0" (click)="clearSearch()">clear</igx-icon>
-                  </igx-prefix>
-                <input class="listSample__filter" igxInput type="text" [(ngModel)]="searchText" placeholder="Search by Order Id/Location">
-              </igx-input-group>
-            </div>
-  
-            <div class="toolbar-row">
-                <span class="">{{ dataLength }} Available Loads</span>
-                <app-list-pager #pager (page)="paginate($event)"></app-list-pager>
-            </div>
-  
-        </div>
+
+        <app-list-pager #pager (pagingDone)="refreshData($event)" (filteringDone)="refreshData($event)"></app-list-pager>
 
         <div class="list-container">
           <igx-list #loadsList [isLoading]="isLoading">
-              <igx-list-item #item *ngFor="let load of data | igxFilter: filterLoads;">
+              <igx-list-item #item *ngFor="let load of data;">
                   <div class="item-container">
                       
-                      <div class="item orderid-item">
+                      <div class="item orderid-item" [ngClass]="{'available': load['isReviewed']}">
                           <span><strong>Order #:</strong> {{ load.alternateNumber }}</span>
                           <span><strong>{{ load['equipmentType'] | uppercase }}</strong></span>
                           <span class="availabilityButton">{{ load['isReviewed'] ? "Available" : "Reviewed" }}</span>
@@ -57,7 +42,9 @@
                       </div>
 
                       <div class="item">
-                          <button igxButton="flat" igxButtonColor="dodgerblue" igxButtonBackground="white" class="accordion" (click)="togglePanel($event, cell.row.rowData['alternateNumber'])">QUICK VIEW</button>       
+                        <button igxButton="flat" igxButtonColor="dodgerblue" igxButtonBackground="white" class="accordion" (click)="togglePanel($event, cell.row.rowData['alternateNumber'])">DETAIL VIEW</button>       
+                        <button igxButton="flat" igxButtonColor="dodgerblue" igxButtonBackground="white" class="accordion" (click)="togglePanel($event, cell.row.rowData['alternateNumber'])">EXPAND VIEW</button>       
+                        <button igxButton="flat" igxButtonColor="dodgerblue" igxButtonBackground="white" class="accordion" (click)="togglePanel($event, cell.row.rowData['alternateNumber'])">QUICK VIEW</button>       
                       </div>
                       
                   </div>

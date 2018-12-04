@@ -1,51 +1,46 @@
 import { Injectable } from '@angular/core';
 import { LOADS } from './data';
-import { Observable, BehaviorSubject } from 'rxjs';
+import { IFilteringArgs } from '../pager/pager.component';
 
 @Injectable()
 export class DataService {
-    public records: BehaviorSubject<any[]>;
+    public data: any[];
+    public dataLength: number;
 
     constructor() {
-        this.records = new BehaviorSubject([]);
+        this.data = [];
+        this.dataLength = this.data.length;
     }
 
-    public getLoads(index?: number, perPage?: number) {
-        let data = LOADS[0]['items'];
+    public getLoads(args: IFilteringArgs, index?: number, perPage?: number) {
+        this.data = args.value ? this.getFilteredLoads(args.field, args.value) : this.getAllLoads();
+
         index = index ? index : 0;
+        this.dataLength = this.data.length;
 
         if (perPage) {
-            data = data.slice(index, index + perPage);
+           return this.getDataForPage(index, perPage);
         }
 
-        return this.records.next(data);
+        return this.data;
     }
 
-    public getData(index?: number, perPage?: number): any {
-        // let qS = "";
-
-        // if (perPage) {
-        //     qS = `?$skip=${index}&$top=${perPage}&$count=true`;
-        // }
-
-        // this.http
-        //     .get(`${this.url + qS}`).pipe(
-        //         map((data: any) => {
-        //             return data;
-        //         })
-        //     ).subscribe((data) => this.remoteData.next(data));
+    public getDataForPage(index: number, perPage: number ) {
+        const dataChunk = this.data.slice(index * perPage, index * perPage + perPage);
+        return dataChunk;
     }
 
-    public getDataLength(): any {
-        return LOADS[0]['items'].length;
+    private getFilteredLoads(field: string, val: any): any {
+        this.data = this.getAllLoads().filter(rec => rec[field].startsWith(val));
+        return this.data;
     }
 
-    // public getData(): Promise<any> {
-    //     return new Promise((resolve, reject) => {
-    //         this.http.get("https://randomuser.me/api/?inc=gender,name,picture&results=" + 200)
-    //             .subscribe((data: IServiceResponse) => {
-    //                 resolve(data.results);
-    //             });
-    //     });
-    // }
+    private getAllLoads() {
+        const allData =  LOADS[0]['items'];
+        return allData;
+    }
+
+    get getDataLength(): any {
+        return this.dataLength;
+    }
 }

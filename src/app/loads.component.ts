@@ -1,15 +1,11 @@
 import {
   Component,
   OnInit,
-  OnDestroy,
-  AfterViewInit,
-  QueryList,
   ViewChild,
   ChangeDetectorRef
 } from '@angular/core';
 import { PagerComponent } from './pager/pager.component';
-import { IgxListComponent, IgxFilterOptions } from 'igniteui-angular';
-import { Observable } from 'rxjs';
+import { IgxListComponent } from 'igniteui-angular';
 import { DataService } from './services/dataService';
 
 @Component({
@@ -18,7 +14,7 @@ import { DataService } from './services/dataService';
   templateUrl: './loads.component.html',
   styleUrls: ['./loads.component.scss']
 })
-export class LoadsComponent implements OnInit, OnDestroy {
+export class LoadsComponent implements OnInit {
 
   @ViewChild('loadsList', { read: IgxListComponent })
   public loadsList: IgxListComponent;
@@ -27,39 +23,19 @@ export class LoadsComponent implements OnInit, OnDestroy {
   public pager: PagerComponent;
 
   public data: any[] ;
-  public searchText = '';
   public intlFormatOptions = { year: 'numeric', month: 'numeric', day: 'numeric', hour: 'numeric', minute: 'numeric', hour12: false };
   public isLoading = true;
   public totalCount: number;
   public totalPages: number;
   public perPage = 6;
 
-  private subscription: any;
-
   constructor(private crd: ChangeDetectorRef, private service: DataService) {
 
   }
 
   public ngOnInit() {
-    this.service.getLoads();
-    const self = this;
-    this.subscription = this.service.records.asObservable().subscribe((data) => {
-      self.data = data;
-      self.isLoading = false;
-    });
-  }
-
-  get filterLoads() {
-    const fo = new IgxFilterOptions();
-    fo.key = 'alternateNumber';
-    fo.inputValue = this.searchText;
-    return fo;
-  }
-
-
-  public clearSearch() {
-    // this.searchText = '';
-    // this.grid1.clearSearch();
+    this.data = this.pager.data;
+    this.isLoading = false;
   }
 
   public formatValue(val: any): string {
@@ -80,16 +56,9 @@ export class LoadsComponent implements OnInit, OnDestroy {
     return row.rowData[field];
   }
 
-  public ngOnDestroy() {
-    this.subscription.unsubscribe();
+
+  public refreshData(event: any) {
+    this.data = this.pager.data;
   }
-
-  // get dataLength() {
-  //   return this.loadsList.data.length;
-  // }
-
-  // public paginate(index: number) {
-  //   this.grid1.paginate(index);
-  // }
 }
 
