@@ -18,7 +18,7 @@ export interface IPagingArgs {
     templateUrl: './pager.component.html'
 })
 
-export class PagerComponent implements OnInit {
+export class PagerComponent {
     @Input()
     public perPage = 6;
 
@@ -37,13 +37,6 @@ export class PagerComponent implements OnInit {
         this.pagerButtons = Array(this.totalPages).fill(null).map((x, i) => i );
     }
 
-    public ngOnInit() {
-        // this.dataSubscriber = this.service.getDataLength().subscribe((data) => {
-        //     this.totalCount = data;
-        //     this.totalPages = Math.ceil(data / this.perPage);
-        //     // this.buttonDeselection(this.page, this.totalPages);
-        // });
-    }
     public paginate(event: any, index: number) {
         this.index = index;
         this.data = this.service.getDataForPage(this.index, this.perPage);
