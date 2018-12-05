@@ -1,7 +1,7 @@
 :host ::ng-deep {
   
   .sample-wrapper {
-    width: 80%;
+    width: 90%;
     height: 100%;
     margin: 1px;
     padding: 20px;
@@ -28,29 +28,30 @@
   .item {
     display: grid;
     grid-row-gap: 3px;
-    span.action {
-      border: none;
-      text-align: center;
-      font-weight: 600;
-      cursor: pointer;
-      color: dodgerblue;
-    }
-    span.place {
-      color: black;
-      border: 1px solid lightgrey;
-    }
-    span.buy {
-      color: white;
-      background-color: black;
-      border: 1px solid lightgrey;
-    }
+  }
+
+  span.action {
+    border: none;
+    text-align: center;
+    font-weight: 600;
+    cursor: pointer;
+    color: dodgerblue;
+  }
+  span.place {
+    color: black;
+    border: 1px solid lightgrey;
+  }
+  span.buy {
+    color: white;
+    background-color: black;
+    border: 1px solid lightgrey;
   }
 
   .item.order-item {
     text-align: center;
   }
 
-  .address-cell {
+  .locations-container {
     align-items: center;
     width: 700px;
   }
@@ -59,6 +60,7 @@
     display: flex;
     .location-item {
       width: 400px;
+      display: grid;
     }
   }
 
@@ -67,6 +69,19 @@
     border: 1px solid grey;
     text-align: center;
     padding: 5px;
+  }
+
+  .labels-container {
+    display: contents;
+    div {
+      display: grid;
+      grid-template-rows: 15px;
+    }
+  }
+
+  .action-items-container {
+    display: grid;
+    grid-row-gap: 3px;
   }
 
   .availability-button {
@@ -92,5 +107,95 @@
     color: #999;
     font-size: 24px;
     height: 100%;
+  }
+
+  .customer-title {
+    font-size: 1.2em;
+  }
+  
+  @media screen and (max-width: 375px) {
+    .sample-wrapper {
+      width: 100%;
+      padding: 0px;
+
+      div.list-wrapper {
+        padding: 0px;
+      } 
+    }
+
+    .item-container {
+      display: grid;
+      grid-row-gap: 10px;
+    }
+
+    .item {
+      width: 375px;
+      span.action {
+        border: none;
+        text-align: center;
+        font-weight: 600;
+        cursor: pointer;
+        color: dodgerblue;
+      }
+      span.place {
+        color: black;
+        border: 1px solid lightgrey;
+      }
+      span.buy {
+        color: white;
+        background-color: black;
+        border: 1px solid lightgrey;
+      }
+    }
+
+    .igx-list__item-content {
+      padding: 0;
+    }
+
+    .item.orders-container {
+      display: grid;
+      grid-template-columns: 265px 110px;
+      grid-template-rows: 30px;
+      grid-template-rows: repeat(3, 25px);
+      grid-row-gap: 0px;
+      text-align: left;
+      .order-item-1 { 
+        grid-column-start: 1; 
+        grid-row-start: 1; 
+      }
+      .order-item-2 { 
+        grid-column-start: 1; 
+        grid-row-start: 2; 
+      }
+      .order-item-3 { 
+        grid-column-start: 1; 
+        grid-row-start: 3; 
+      }
+      span:nth-child(1n + 4) {
+        text-align: center;
+      }
+    }
+
+    .action-items-container {
+      width: 375px;
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      grid-column-gap: 10px;
+    }
+
+    .labels-container {
+      display: grid;
+      grid-template-columns: 2fr 2fr 1fr;
+      width: 375px;
+    }
+
+    .view-buttons-container {
+      display: none;
+    }
+
+    .igx-list__item-base {
+      padding: 10px 0px;
+      border-bottom: 1px solid lightgrey;
+    }
   }
 }

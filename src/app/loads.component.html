@@ -8,18 +8,18 @@
                   <div class="item-container">
                       
                       <!-- Order # -->
-                      <div class="item order-item" [ngClass]="{'available': load['isReviewed']}">
-                          <span><strong>LOB</strong></span>
-                          <span><strong>Order #:</strong> {{ load.alternateNumber }}</span>
-                          <span><strong>{{ load['equipmentType'] | uppercase }}</strong></span>
-                          <span class="availability-button">{{ load['isReviewed'] ? "Available" : "Reviewed" }}</span>
-                          <span><strong>Pick up Time in</strong></span>
-                          <span>00:00</span>
+                      <div class="item orders-container" [ngClass]="{'available': load['isReviewed']}">
+                          <span class="order-item-1"><strong>LOB</strong></span>
+                          <span class="order-item-2"><strong>Order #:</strong> {{ load.alternateNumber }}</span>
+                          <span class="order-item-3"><strong>{{ load['equipmentType'] | uppercase }}</strong></span>
+                          <span class="order-item-4 availability-button">{{ load['isReviewed'] ? "Available" : "Reviewed" }}</span>
+                          <span class="order-item-5"><strong>Pick up Time in</strong></span>
+                          <span class="order-item-6">00:00</span>
                       </div>
-    
+   
                       <!-- Locations addresses -->
-                      <div class="address-cell">
-                          <span><strong>Customer: Customer Name</strong></span>
+                      <div class="locations-container">
+                          <span class="customer-title"><strong>Customer:</strong> Customer Name</span>
                           <div class="locations">
                                 <igx-icon name="location_on" color="#0375be"></igx-icon>
                                 <div class="location-item">
@@ -37,33 +37,55 @@
                           </div>
                       </div>
 
-                      <!-- Buy now # -->
-                      <div class="item">
-                          <span>Buy it now</span>
-                          <span><strong>{{ load['dmpRate'] | currency }}</strong></span>
+                      <!-- Labels -->
+                      <div class="labels-container">
+                            <!-- Buy now # -->
+                            <div>
+                                <span>Buy it now</span>
+                                <span><strong>{{ load['dmpRate'] | currency }}</strong></span>
+                            </div>
+
+                            <!-- Label -->
+                            <div>
+                                <span>Label</span>
+                                <span><strong>Information</strong></span>
+                            </div>
+
+                            <!-- Label -->
+                            <div>
+                                <span>Label</span>
+                                <span><strong>Information</strong></span>
+                            </div>
+
+                            <!-- Label -->
+                            <div>
+                                <span>Label</span>
+                                <span><strong>Information</strong></span>
+                            </div>
+        
+                            <!-- Label -->
+                            <div>
+                                <span>Label</span>
+                                <span><strong>Information</strong></span>
+                            </div>
+
+                            <!-- Label -->
+                            <div>
+                                <span>Label</span>
+                                <span><strong>Information</strong></span>
+                            </div>
                       </div>
 
-                      <!-- Label -->
-                      <div class="item">
-                        <span>Label</span>
-                        <span><strong>Information</strong></span>
-                      </div>
-
-                      <!-- Label -->
-                      <div class="item">
-                        <span>Label</span>
-                        <span><strong>Information</strong></span>
-                      </div>
 
                       <!-- Action buttons -->
-                      <div class="item">
+                      <div class="action-items-container">
                         <span class="action place">PLACE BID</span>
                         <span class="action buy">BUY IT NOW</span>
                         <igx-checkbox>Compare</igx-checkbox>
                       </div>
 
                       <!-- View buttons -->
-                      <div class="item">
+                      <div class="item view-buttons-container">
                         <span class="action">DETAIL VIEW</span>
                         <span class="action">EXPAND VIEW</span>
                         <span class="action">QUICK VIEW</span>
