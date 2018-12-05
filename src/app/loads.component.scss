@@ -26,6 +26,7 @@
 
   .list-container{
     padding-top: 10px;
+    font-size: 0.9em;
   }
 
   .item-container {
@@ -45,8 +46,34 @@
 
   .item {
     display: grid;
-    grid-row-gap: 5px;
-    padding: 10px;
+    grid-row-gap: 3px;
+    span.action {
+      border: none;
+      text-align: center;
+      font-weight: 600;
+      cursor: pointer;
+      color: dodgerblue;
+    }
+    span.place {
+      color: black;
+      border: 1px solid lightgrey;
+    }
+    span.buy {
+      color: white;
+      background-color: black;
+      border: 1px solid lightgrey;
+    }
+  }
+
+  .locations{
+    display: flex;
+  }
+
+  .location-label{
+    border-radius: 4px;
+    border: 1px solid grey;
+    text-align: center;
+    padding: 5px;
   }
 
   div.item.orderid-item{
@@ -54,25 +81,22 @@
   }
 
   .address-cell {
-    display: flex;
     align-items: center;
-    height: 100%;
+    width: 700px;
   }
 
-  .availabilityButton {
+  .availability-button {
     background-color: orange;
     border-radius: 12px;
     border: none;
     color: white;
-    padding: 6px;
     text-align: center;
     font-weight: 600;
-    display: inline-block;
     cursor: pointer;
   }
 
   .available{
-    .availabilityButton {
+    .availability-button {
       background-color: #4CAF50;
     }
   }
