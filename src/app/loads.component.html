@@ -8,7 +8,8 @@
               <igx-list-item #item *ngFor="let load of data;">
                   <div class="item-container">
                       
-                      <div class="item orderid-item" [ngClass]="{'available': load['isReviewed']}">
+                      <!-- Order # -->
+                      <div class="item order-item" [ngClass]="{'available': load['isReviewed']}">
                           <span><strong>LOB</strong></span>
                           <span><strong>Order #:</strong> {{ load.alternateNumber }}</span>
                           <span><strong>{{ load['equipmentType'] | uppercase }}</strong></span>
@@ -17,15 +18,17 @@
                           <span>00:00</span>
                       </div>
     
+                      <!-- Locations addresses -->
                       <div class="address-cell">
                           <span><strong>Customer: Customer Name</strong></span>
                           <div class="locations">
                                 <igx-icon name="location_on" color="#0375be"></igx-icon>
-                                <div class="item" style="width: 400px">
+                                <div class="location-item">
                                     <span><strong>{{ load['origin']['locationAddress1'] }}, {{ load['origin']['cityName'] }}, {{ load['origin']['stateCode'] }}, {{ load['origin']['zipCode'] }}</strong></span>
                                     <span>Pick Up: {{ formatDate(load['origin']['scheduledArrivalEarly']) }}</span>
                                 </div>
-                                <div class="item" style="width: 400px">
+                                <igx-icon name="location_on" color="dodgerBlue"></igx-icon>
+                                <div class="location-item">
                                       <span><strong>{{ load['destination']['locationAddress1'] }}, {{ load['destination']['cityName'] }}, {{ load['destination']['stateCode'] }}, {{ load['destination']['zipCode'] }}</strong></span>
                                       <span>Delivery: {{ formatDate(load['destination']['scheduledArrivalEarly']) }}</span>
                                 </div>
@@ -33,30 +36,34 @@
                           <div>
                               <span class="location-label" *ngFor="let label of [1, 2, 3, 4, 5, 6]; let i = index">label</span>
                           </div>
-
                       </div>
 
+                      <!-- Buy now # -->
                       <div class="item">
                           <span>Buy it now</span>
                           <span><strong>{{ load['dmpRate'] | currency }}</strong></span>
                       </div>
 
+                      <!-- Label -->
                       <div class="item">
                         <span>Label</span>
                         <span><strong>Information</strong></span>
-                        </div>
-
-                        <div class="item">
-                            <span>Label</span>
-                            <span><strong>Information</strong></span>
-                        </div>
-
-                      <div class="item">
-                          <span class="action place">PLACE BID</span>
-                          <span class="action buy">BUY IT NOW</span>
-                          <igx-checkbox>Compare</igx-checkbox>
                       </div>
 
+                      <!-- Label -->
+                      <div class="item">
+                        <span>Label</span>
+                        <span><strong>Information</strong></span>
+                      </div>
+
+                      <!-- Action buttons -->
+                      <div class="item">
+                        <span class="action place">PLACE BID</span>
+                        <span class="action buy">BUY IT NOW</span>
+                        <igx-checkbox>Compare</igx-checkbox>
+                      </div>
+
+                      <!-- View buttons -->
                       <div class="item">
                         <span class="action">DETAIL VIEW</span>
                         <span class="action">EXPAND VIEW</span>

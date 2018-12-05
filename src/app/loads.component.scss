@@ -6,7 +6,6 @@
 @import '~igniteui-angular/lib/core/styles/themes/utilities';
 
 :host ::ng-deep {
-  $grey: grey;
   
   .sample-wrapper {
     width: 80%;
@@ -16,15 +15,13 @@
     
     div.list-wrapper {
       background: white;
-      width: 100%;
-      color: $grey;
       padding: 16px 24px;
       box-shadow: 0 1px 5px 0 rgba(0,0,0,.26), 0 2px 2px 0 rgba(0,0,0,.12), 2px 3px 1px -2px rgba(0,0,0,.08);
       border-radius: 2px;
     } 
   }
 
-  .list-container{
+  .list-container {
     padding-top: 10px;
     font-size: 0.9em;
   }
@@ -33,15 +30,6 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-  }
-  
-  .center {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    color: #999;
-    font-size: 24px;
-    height: 100%;
   }
 
   .item {
@@ -65,24 +53,27 @@
     }
   }
 
-  .locations{
-    display: flex;
-  }
-
-  .location-label{
-    border-radius: 4px;
-    border: 1px solid grey;
-    text-align: center;
-    padding: 5px;
-  }
-
-  div.item.orderid-item{
+  .item.order-item {
     text-align: center;
   }
 
   .address-cell {
     align-items: center;
     width: 700px;
+  }
+
+  .locations {
+    display: flex;
+    .location-item {
+      width: 400px;
+    }
+  }
+
+  .location-label {
+    border-radius: 4px;
+    border: 1px solid grey;
+    text-align: center;
+    padding: 5px;
   }
 
   .availability-button {
@@ -99,5 +90,14 @@
     .availability-button {
       background-color: #4CAF50;
     }
+  }
+
+  .center {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #999;
+    font-size: 24px;
+    height: 100%;
   }
 }
