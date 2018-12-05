@@ -25,7 +25,70 @@
     align-items: center;
   }
 
-  .item {
+  .orders-container {
+    text-align: center;
+  }
+
+  .orders-container, .view-buttons-container {
+    display: grid;
+    grid-row-gap: 3px;
+  }
+
+  .locations-container {
+    align-items: center;
+    width: 700px;
+  }
+
+  .locations {
+    display: flex;
+    .location-item {
+      width: 400px;
+      display: grid;
+    }
+    igx-icon {
+      vertical-align: -webkit-baseline-middle;
+    }
+    .icon {
+      width: 2.5em;
+      height: 2.5em;
+      border-radius: 24px;
+      text-align: center;
+    }
+    .icon:nth-child(n + 1) {
+      background-color: #0375be;
+    }
+    .icon:nth-child(1n + 2) {
+      background-color: dodgerBlue;
+    }
+  }
+
+  .location-labels-container {
+    display: grid;
+    width: 375px;
+    grid-template-columns: repeat(auto-fit, minmax(50px, 1fr));
+    grid-column-gap: 10px;
+    grid-template-rows: 20px;
+    padding-top: 10px;
+  }
+
+  .location-label {
+    border-radius: 4px;
+    border: 1px solid grey;
+    text-align: center;
+    display: table;
+    align-items: center;
+    line-height: 1em;
+  }
+
+  .labels-container {
+    display: contents;
+    div {
+      display: grid;
+      grid-template-rows: 15px;
+    }
+  }
+
+  .action-items-container {
     display: grid;
     grid-row-gap: 3px;
   }
@@ -44,44 +107,6 @@
   span.buy {
     color: white;
     background-color: black;
-    border: 1px solid lightgrey;
-  }
-
-  .item.order-item {
-    text-align: center;
-  }
-
-  .locations-container {
-    align-items: center;
-    width: 700px;
-  }
-
-  .locations {
-    display: flex;
-    .location-item {
-      width: 400px;
-      display: grid;
-    }
-  }
-
-  .location-label {
-    border-radius: 4px;
-    border: 1px solid grey;
-    text-align: center;
-    padding: 5px;
-  }
-
-  .labels-container {
-    display: contents;
-    div {
-      display: grid;
-      grid-template-rows: 15px;
-    }
-  }
-
-  .action-items-container {
-    display: grid;
-    grid-row-gap: 3px;
   }
 
   .availability-button {
@@ -125,34 +150,14 @@
 
     .item-container {
       display: grid;
-      grid-row-gap: 10px;
-    }
-
-    .item {
-      width: 375px;
-      span.action {
-        border: none;
-        text-align: center;
-        font-weight: 600;
-        cursor: pointer;
-        color: dodgerblue;
-      }
-      span.place {
-        color: black;
-        border: 1px solid lightgrey;
-      }
-      span.buy {
-        color: white;
-        background-color: black;
-        border: 1px solid lightgrey;
-      }
+      grid-row-gap: 15px;
     }
 
     .igx-list__item-content {
       padding: 0;
     }
 
-    .item.orders-container {
+    .orders-container {
       display: grid;
       grid-template-columns: 265px 110px;
       grid-template-rows: 30px;
@@ -176,17 +181,46 @@
       }
     }
 
-    .action-items-container {
-      width: 375px;
+    .locations {
       display: grid;
-      grid-template-columns: repeat(2, 1fr);
+      width: 375px;
+      padding: 5px 10px;
       grid-column-gap: 10px;
+      .igx-icon:first-child { 
+        grid-column-start: 1; 
+        grid-row-start: 1;
+      }
+      .location-item:first-child { 
+        grid-column-start: 2; 
+        grid-row-start: 1; 
+      }
+
+      .igx-icon:nth-child(2) { 
+        grid-column-start:2; 
+        grid-row-start: 1; 
+      }
+      .location-item:nth-child(2) { 
+        grid-column-start: 2;
+        grid-row-start: 1; 
+      }
+      .location-item {
+        span {
+          width: 50%;
+        }
+      }
     }
 
     .labels-container {
       display: grid;
       grid-template-columns: 2fr 2fr 1fr;
       width: 375px;
+    }
+
+    .action-items-container {
+      width: 375px;
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      grid-column-gap: 10px;
     }
 
     .view-buttons-container {

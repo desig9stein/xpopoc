@@ -6,9 +6,8 @@
           <igx-list #loadsList [isLoading]="isLoading">
               <igx-list-item #item *ngFor="let load of data;">
                   <div class="item-container">
-                      
                       <!-- Order # -->
-                      <div class="item orders-container" [ngClass]="{'available': load['isReviewed']}">
+                      <div class="orders-container" [ngClass]="{'available': load['isReviewed']}">
                           <span class="order-item-1"><strong>LOB</strong></span>
                           <span class="order-item-2"><strong>Order #:</strong> {{ load.alternateNumber }}</span>
                           <span class="order-item-3"><strong>{{ load['equipmentType'] | uppercase }}</strong></span>
@@ -21,18 +20,18 @@
                       <div class="locations-container">
                           <span class="customer-title"><strong>Customer:</strong> Customer Name</span>
                           <div class="locations">
-                                <igx-icon name="location_on" color="#0375be"></igx-icon>
+                                <span class="icon"><igx-icon name="location_on" color="white"></igx-icon></span>
                                 <div class="location-item">
                                     <span><strong>{{ load['origin']['locationAddress1'] }}, {{ load['origin']['cityName'] }}, {{ load['origin']['stateCode'] }}, {{ load['origin']['zipCode'] }}</strong></span>
                                     <span>Pick Up: {{ formatDate(load['origin']['scheduledArrivalEarly']) }}</span>
                                 </div>
-                                <igx-icon name="location_on" color="dodgerBlue"></igx-icon>
+                                <span class="icon"><igx-icon name="location_on" color="white"></igx-icon></span>
                                 <div class="location-item">
                                       <span><strong>{{ load['destination']['locationAddress1'] }}, {{ load['destination']['cityName'] }}, {{ load['destination']['stateCode'] }}, {{ load['destination']['zipCode'] }}</strong></span>
                                       <span>Delivery: {{ formatDate(load['destination']['scheduledArrivalEarly']) }}</span>
                                 </div>
                           </div>
-                          <div>
+                          <div class="location-labels-container">
                               <span class="location-label" *ngFor="let label of [1, 2, 3, 4, 5, 6]; let i = index">label</span>
                           </div>
                       </div>
@@ -76,7 +75,6 @@
                             </div>
                       </div>
 
-
                       <!-- Action buttons -->
                       <div class="action-items-container">
                         <span class="action place">PLACE BID</span>
@@ -85,12 +83,11 @@
                       </div>
 
                       <!-- View buttons -->
-                      <div class="item view-buttons-container">
+                      <div class="view-buttons-container">
                         <span class="action">DETAIL VIEW</span>
                         <span class="action">EXPAND VIEW</span>
                         <span class="action">QUICK VIEW</span>
                       </div>
-                      
                   </div>
               </igx-list-item>
               <ng-template igxEmptyList>
