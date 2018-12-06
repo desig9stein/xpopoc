@@ -40,9 +40,10 @@
   }
 
   .locations {
-    display: flex;
+    display: grid;
+    grid-template-columns: 0.5fr 4fr 0.5fr 4fr;
+    grid-column-gap: 10px;
     .location-item {
-      width: 400px;
       display: grid;
     }
     igx-icon {
@@ -186,6 +187,7 @@
       width: 375px;
       padding: 5px 10px;
       grid-column-gap: 10px;
+      grid-template-columns: 0.1fr 1fr;
       .igx-icon:first-child { 
         grid-column-start: 1; 
         grid-row-start: 1;
