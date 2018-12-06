@@ -1,7 +1,7 @@
 :host ::ng-deep {
   
   .sample-wrapper {
-    width: 90%;
+    width: 98%;
     height: 100%;
     margin: 1px;
     padding: 20px;
@@ -14,8 +14,12 @@
     } 
   }
 
+  .igx-list__item-content {
+    padding: 0;
+  }
+
   .list-container {
-    padding-top: 10px;
+    padding-top: 16px;
     font-size: 0.9em;
   }
 
@@ -23,6 +27,7 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
+    padding-top: 24px;
   }
 
   .orders-container {
@@ -31,18 +36,24 @@
 
   .orders-container, .view-buttons-container {
     display: grid;
+    grid-template-rows: repeat(3, 20px);
     grid-row-gap: 3px;
+    width: 140px;
+    .order-item-6 {
+      color: red;
+    }
   }
 
   .locations-container {
     align-items: center;
-    width: 700px;
+    padding: 8px 16px;
   }
 
   .locations {
     display: grid;
     grid-template-columns: 0.5fr 4fr 0.5fr 4fr;
-    grid-column-gap: 10px;
+    grid-column-gap: 16px;
+    padding: 8px 0px;
     .location-item {
       display: grid;
     }
@@ -65,11 +76,10 @@
 
   .location-labels-container {
     display: grid;
-    width: 375px;
-    grid-template-columns: repeat(auto-fit, minmax(50px, 1fr));
-    grid-column-gap: 10px;
+    width: 343px;
+    grid-template-columns: repeat(auto-fit, minmax(40px, 0.2fr));
+    grid-column-gap: 5px;
     grid-template-rows: 20px;
-    padding-top: 10px;
   }
 
   .location-label {
@@ -82,7 +92,9 @@
   }
 
   .labels-container {
-    display: contents;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-gap: 20px;
     div {
       display: grid;
       grid-template-rows: 15px;
@@ -111,6 +123,7 @@
   }
 
   .availability-button {
+    width: 80%;
     background-color: orange;
     border-radius: 12px;
     border: none;
@@ -118,6 +131,9 @@
     text-align: center;
     font-weight: 600;
     cursor: pointer;
+    display: table;
+    align-items: center;
+    line-height: 1.5em;
   }
 
   .available{
@@ -145,25 +161,20 @@
       padding: 0px;
 
       div.list-wrapper {
-        padding: 0px;
+        padding: 8px 16px;
       } 
     }
 
     .item-container {
       display: grid;
       grid-row-gap: 15px;
-    }
-
-    .igx-list__item-content {
-      padding: 0;
+      padding-top: 8px;
     }
 
     .orders-container {
       display: grid;
-      grid-template-columns: 265px 110px;
-      grid-template-rows: 30px;
-      grid-template-rows: repeat(3, 25px);
-      grid-row-gap: 0px;
+      grid-template-columns: 150px 100px;
+      grid-column-gap: 95px;
       text-align: left;
       .order-item-1 { 
         grid-column-start: 1; 
@@ -178,16 +189,20 @@
         grid-row-start: 3; 
       }
       span:nth-child(1n + 4) {
-        text-align: center;
+        margin: auto;
       }
+    }
+
+    .locations-container {
+      padding: 0px;
     }
 
     .locations {
       display: grid;
-      width: 375px;
-      padding: 5px 10px;
-      grid-column-gap: 10px;
-      grid-template-columns: 0.1fr 1fr;
+      width: 343px;
+      grid-template-columns: 0.1fr 0.8fr;
+      grid-gap: 16px;
+      padding: 8px 0px;
       .igx-icon:first-child { 
         grid-column-start: 1; 
         grid-row-start: 1;
@@ -205,21 +220,16 @@
         grid-column-start: 2;
         grid-row-start: 1; 
       }
-      .location-item {
-        span {
-          width: 50%;
-        }
-      }
     }
 
     .labels-container {
       display: grid;
       grid-template-columns: 2fr 2fr 1fr;
-      width: 375px;
+      width: 343px;
     }
 
     .action-items-container {
-      width: 375px;
+      width: 343px;
       display: grid;
       grid-template-columns: repeat(2, 1fr);
       grid-column-gap: 10px;
