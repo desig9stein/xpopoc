@@ -8,6 +8,9 @@
   }
 }
 
+$border-color-light: rgba(221, 221, 221, 0.6);
+$border-color-dark: rgba(221, 221, 221, 0.2);
+
 .dark-theme {
   :host ::ng-deep {
     .paginator-label {
@@ -20,6 +23,10 @@
     .selected {
       color: #fff;
       background: rgba(255,255,255, .14);
+    }
+
+    .list-sample-toolbar {
+      border-bottom: 1px solid $border-color-dark;
     }
   }
 }
@@ -48,6 +55,10 @@
   align-items: center;
   padding: 0 15px;
   max-width: 500px;
+}
+
+.list-sample-toolbar {
+  border-bottom: 1px solid $border-color-light;
 }
 
 .fake-placeholder {
