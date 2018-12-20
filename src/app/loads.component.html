@@ -1,103 +1,116 @@
-<div class="sample-wrapper">
-    <div class="list-wrapper">
-        <app-list-pager #pager (pagingDone)="refreshData($event)" (filteringDone)="refreshData($event)"></app-list-pager>
+<div class="poc-wrapper">
+  <app-list-pager #pager (pagingDone)="refreshData($event)" (filteringDone)="refreshData($event)"></app-list-pager>
 
-        <div class="list-container">
-          <igx-list #loadsList [isLoading]="isLoading">
-              <igx-list-item #item *ngFor="let load of data;">
-                  <div class="item-container">
-                      <!-- Order # -->
-                      <div class="orders-container" [ngClass]="{'available': load['isReviewed']}">
-                          <span class="order-item-1"><strong>LOB</strong></span>
-                          <span class="order-item-2"><strong>Order #:</strong> {{ load.alternateNumber }}</span>
-                          <span class="order-item-3"><strong>{{ load['equipmentType'] | uppercase }}</strong></span>
-                          <span class="order-item-4 availability-button">{{ load['isReviewed'] ? "Available" : "Reviewed" }}</span>
-                          <span class="order-item-5"><strong>Pick up Time in</strong></span>
-                          <span class="order-item-6">00:00</span>
-                      </div>
-   
-                      <!-- Locations addresses -->
-                      <div class="locations-container">
-                          <span class="customer-title"><strong>Customer:</strong> Customer Name</span>
-                          <div class="locations">
-                                <span class="icon"><igx-icon name="location_on" color="white"></igx-icon></span>
-                                <div class="location-item">
-                                    <span><strong>{{ load['origin']['locationAddress1'] }}, {{ load['origin']['cityName'] }}, {{ load['origin']['stateCode'] }}, {{ load['origin']['zipCode'] }}</strong></span>
-                                    <span>Pick Up: {{ formatDate(load['origin']['scheduledArrivalEarly']) }}</span>
-                                </div>
-                                <span class="icon"><igx-icon name="location_on" color="white"></igx-icon></span>
-                                <div class="location-item">
-                                      <span><strong>{{ load['destination']['locationAddress1'] }}, {{ load['destination']['cityName'] }}, {{ load['destination']['stateCode'] }}, {{ load['destination']['zipCode'] }}</strong></span>
-                                      <span>Delivery: {{ formatDate(load['destination']['scheduledArrivalEarly']) }}</span>
-                                </div>
-                          </div>
-                          <div class="location-labels-container">
-                              <span class="location-label" *ngFor="let label of [1, 2, 3, 4, 5, 6]; let i = index">label</span>
-                          </div>
-                      </div>
+  <igx-list #loadsList [isLoading]="isLoading">
+    <igx-list-item #item *ngFor="let load of data;">
+      <div class="list-template">
+        <!-- Order # -->
+        <div class="section list-template__orders" [ngClass]="{'available': load['isReviewed']}">
+          <div>
+            <span><strong>LOB</strong></span>
+            <span><strong>Order #:</strong> {{ load.alternateNumber }}</span>
+            <span><strong>{{ load['equipmentType'] | uppercase }}</strong></span>
+          </div>
+          <div class="text-align">
+            <span class="list-template__availability">{{ load['isReviewed'] ? "Available" : "Reviewed" }}</span>
+            <strong class="list-template__pickup-time">Pick up Time in</strong>
+            <div class="alert">
+              <igx-icon class="clock-icon" name="access_time"></igx-icon>
+              <div>00:00</div>
+            </div>
 
-                      <!-- Labels -->
-                      <div class="labels-container">
-                            <!-- Buy now # -->
-                            <div>
-                                <span>Buy it now</span>
-                                <span><strong>{{ load['dmpRate'] | currency }}</strong></span>
-                            </div>
-
-                            <!-- Label -->
-                            <div>
-                                <span>Label</span>
-                                <span><strong>Information</strong></span>
-                            </div>
-
-                            <!-- Label -->
-                            <div>
-                                <span>Label</span>
-                                <span><strong>Information</strong></span>
-                            </div>
-
-                            <!-- Label -->
-                            <div>
-                                <span>Label</span>
-                                <span><strong>Information</strong></span>
-                            </div>
-        
-                            <!-- Label -->
-                            <div>
-                                <span>Label</span>
-                                <span><strong>Information</strong></span>
-                            </div>
-
-                            <!-- Label -->
-                            <div>
-                                <span>Label</span>
-                                <span><strong>Information</strong></span>
-                            </div>
-                      </div>
-
-                      <!-- Action buttons -->
-                      <div class="action-items-container">
-                        <span class="action place">PLACE BID</span>
-                        <span class="action buy">BUY IT NOW</span>
-                        <igx-checkbox>Compare</igx-checkbox>
-                      </div>
-
-                      <!-- View buttons -->
-                      <div class="view-buttons-container">
-                        <span class="action">DETAIL VIEW</span>
-                        <span class="action">EXPAND VIEW</span>
-                        <span class="action">QUICK VIEW</span>
-                      </div>
-                  </div>
-              </igx-list-item>
-              <ng-template igxEmptyList>
-                  <div class="center">No data</div>
-              </ng-template>
-              <ng-template igxDataLoading>
-                  <div class="center"><span>Loading data...</span></div>
-              </ng-template>
-          </igx-list>
+          </div>
         </div>
-    </div>
 
+        <div class="main-section">
+          <div class="location-table">
+            <!-- Locations addresses -->
+            <div class="section list-template__locations">
+
+              <div class="list-template__locations-title"><strong>Customer:</strong> Customer Name</div>
+
+              <div class="list-template__locations-addresses">
+
+                <div class="list-template__locations-timeline">
+                <span class="list-template__locations-address-icon">
+                  <igx-icon name="location_on"></igx-icon>
+                </span>
+                  <div class="list-template__locations-address">
+                    <strong>{{ load['origin']['locationAddress1'] }}, {{ load['origin']['cityName'] }}, {{ load['origin']['stateCode'] }}, {{ load['origin']['zipCode'] }}</strong>
+                    <span>Pick Up: {{ formatDate(load['origin']['scheduledArrivalEarly']) }}</span>
+                  </div>
+                </div>
+
+                <div class="list-template__locations-timeline">
+              <span class="list-template__locations-address-icon">
+                <igx-icon name="location_on"></igx-icon>
+              </span>
+                  <div class="list-template__locations-address">
+                    <strong>{{ load['destination']['locationAddress1'] }}, {{ load['destination']['cityName'] }}, {{ load['destination']['stateCode'] }}, {{ load['destination']['zipCode'] }}</strong>
+                    <span>Delivery: {{ formatDate(load['destination']['scheduledArrivalEarly']) }}</span>
+                  </div>
+                </div>
+
+              </div>
+
+              <div class="list-template__locations-labels">
+                <span class="list-template__locations-label" *ngFor="let label of [1, 2, 3, 4, 5, 6]; let i = index">label</span>
+              </div>
+
+            </div>
+
+            <!-- Labels -->
+            <table class="section list-template__table">
+              <!-- Buy now # -->
+              <tr>
+                <th>Buy it now</th>
+                <th>label</th>
+                <th>label</th>
+              </tr>
+
+              <!-- Label -->
+              <tr>
+                <td>{{ load['dmpRate'] | currency }}</td>
+                <td><strong>Information</strong></td>
+                <td><strong>Information</strong></td>
+              </tr>
+
+              <!-- Label -->
+              <tr>
+                <td><strong>Information</strong></td>
+                <td><strong>Information</strong></td>
+                <td><strong>Information</strong></td>
+              </tr>
+            </table>
+          </div>
+
+          <!-- Action buttons -->
+          <div class="section list-template__actions">
+            <div class="btn-wrap">
+              <div igxButton="flat" class="action place">PLACE BID</div>
+              <div igxButton="raised" class="action buy">BUY IT NOW</div>
+            </div>
+            <igx-checkbox>Compare</igx-checkbox>
+          </div>
+        </div>
+
+        <!-- View buttons -->
+        <div class="section list-template__views">
+          <span igxButton="flat" class="action">DETAIL VIEW</span>
+          <span igxButton="flat" class="action">EXPAND VIEW</span>
+          <span igxButton="flat" class="action">QUICK VIEW</span>
+        </div>
+      </div>
+    </igx-list-item>
+
+    <!-- Empty list template -->
+    <ng-template igxEmptyList>
+      <div class="text-align">No data</div>
+    </ng-template>
+
+    <!-- Data loading template -->
+    <ng-template igxDataLoading>
+      <div class="text-align"><span>Loading data...</span></div>
+    </ng-template>
+  </igx-list>
 </div>

@@ -3,41 +3,98 @@
       color: rgba(0,0,0,0.74);
       background: rgba(0,0,0,0.14);
   }
+  .igx-input-group__bundle {
+    padding-top:10px;
+  }
+}
 
-  .paginator {
-      float: right;
+.dark-theme {
+  :host ::ng-deep {
+    .paginator-label {
+      color: #ddd;
+    }
+    .fake-placeholder,
+    .search-holder {
+      background: #333;
+    }
+    .selected {
+      color: #fff;
+      background: rgba(255,255,255, .14);
+    }
+  }
+}
+
+.paginator-label {
+  display: flex;
+  align-items: center;
+  margin-right: 10px;
+}
+
+.list-sample-toolbar {
+  display: flex;
+  justify-content: space-between;
+  padding: 0 15px;
+}
+
+.search-holder {
+  max-width: 100%;
+  min-width: 374px;
+}
+
+.toolbar-section {
+  display: flex;
+  margin: 10px 0;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 15px;
+  max-width: 500px;
+}
+
+.fake-placeholder {
+  display: none;
+}
+
+@media only screen and (max-width: 960px) {
+  .search-holder {
+    max-width: 100%;
+    min-width: 0;
+    flex: 1 0 0%;
+  }
+}
+
+@media only screen and (max-width: 720px) {
+
+  .paginator-label {
+    margin-right: 0;
   }
 
-  .toolbar-row {
-    padding-top: 10px;
-    .igx-input-group,
-    .igx-input-group--focused {
-      .igx-input-group__bundle {
-        transition: background 500ms ease-in-out;
-        padding-top: 0px;
-      }
+  .list-sample-toolbar {
+    flex-direction: column;
+    padding: 0;
+  }
 
-      max-width: 30%;
-      min-width: 20%;
-      font-size: 13px;
-      overflow: hidden;
-      flex: 1 1 auto;
-
-      igx-icon {
-        font-size: 1rem;
-        width: 1rem;
-        height: 1rem;
-      }
+  .toolbar-section {
+    margin: 5px auto 15px auto;
+    align-items: center;
+    flex-direction: column;
+    span {
+      margin-bottom: 10px;
     }
   }
 
-  @media screen and (max-width: 375px) {
-    .toolbar-row {
-      padding-top: 5px;
-      .igx-input-group,
-      .igx-input-group--focused {
-        min-width: 100%;
-      }
-    }
+  .fake-placeholder {
+    display: block;
+    height: 60px;
+  }
+
+  .search-holder {
+    position: fixed;
+    top:0;
+    left: 0;
+    width: 100%;
+    z-index: 2;
+    background: #fff;
+    box-shadow: 0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23);
+    padding: 0 15px 10px;
   }
 }
