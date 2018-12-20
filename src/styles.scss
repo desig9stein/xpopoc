@@ -15,6 +15,7 @@ $light-palette: igx-palette($primary: #FFA418, $secondary: #0076c8) !default;
 }
 
 .dark-theme {
+
   $igx-background-color: #333;
   $igx-foreground-color: text-contrast($igx-background-color);
 
