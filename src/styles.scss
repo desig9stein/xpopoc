@@ -1,8 +1,27 @@
-/* You can add global styles to this file, and also import other style files */
+@import '../node_modules/igniteui-angular/lib/core/styles/themes/index';
+@include igx-core();
 
-html, body {
-  height: 100%;
+$dark-palette: igx-palette($primary: #8500ff, $secondary: #72da67) !default;
+$light-palette: igx-palette($primary: #FFA418, $secondary: #0076c8) !default;
+
+.default-theme {
+  $igx-background-color: #fff;
+  $igx-foreground-color: text-contrast($igx-background-color);
+
+  background: $igx-background-color;
+  color: $igx-foreground-color;
+
+  @include igx-theme($light-palette);
 }
-.content p {
-  margin: 15px;
+
+.dark-theme {
+  $igx-background-color: #333;
+  $igx-foreground-color: text-contrast($igx-background-color);
+
+  background: $igx-background-color;
+  color: $igx-foreground-color;
+
+  @include igx-dark-theme($dark-palette);
 }
+
+
