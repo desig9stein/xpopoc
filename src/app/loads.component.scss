@@ -3,12 +3,6 @@ $border-color-dark: rgba(221, 221, 221, 0.2);
 $section-separator: 20px;
 
 :host ::ng-deep {
-  .list-template__locations-address-icon {
-    igx-icon {
-      color: #fff;
-    }
-  }
-
   igx-icon {
     display: flex;
     align-items: center;
@@ -28,6 +22,12 @@ $section-separator: 20px;
     }
   }
 }
+
+.available .list-template__availability {
+  background: #72da67;
+}
+
+
 
 .poc-wrapper {
   max-width: 1400px;
@@ -51,6 +51,7 @@ $section-separator: 20px;
   padding-bottom: 15px;
   border-bottom: 1px solid $border-color-light;
   display: flex;
+  justify-content: space-between;
 }
 
 .text-align {
@@ -59,7 +60,7 @@ $section-separator: 20px;
 
 .list-template__availability {
   min-width: 120px;
-  background: #666;
+  background: orange;
   color: #fff;
   font-weight: bold;
   border-radius: 8px;
@@ -78,13 +79,17 @@ $section-separator: 20px;
   justify-content: center;
   background: #09f;
   display: flex;
-  padding: 10px;
+  color: #fff;
   min-width: 40px;
   width: 40px;
   height: 40px;
   min-height: 40px;
   border-radius: 50%;
   margin-right: 12px;
+}
+
+.inner {
+  flex: 1;
 }
 
 .list-template__locations-timeline {
@@ -122,11 +127,6 @@ $section-separator: 20px;
   margin-bottom: $section-separator;
 }
 
-.list-template__locations-address {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-}
 
 // Labels section
 
@@ -309,6 +309,9 @@ $section-separator: 20px;
   .location-table {
     flex: 1;
   }
+  .list-template__locations {
+    flex: 1;
+  }
 }
 
 @media only screen and (max-width: 960px) {
@@ -318,6 +321,7 @@ $section-separator: 20px;
 
   .list-template__locations-addresses {
     flex-direction: column;
+    flex:auto;
   }
 
   .list-template__locations-timeline {

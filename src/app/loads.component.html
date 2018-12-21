@@ -29,29 +29,27 @@
 
               <div class="list-template__locations-title"><strong>Customer:</strong> Customer Name</div>
 
-              <div class="list-template__locations-addresses">
+                <div class="list-template__locations-addresses">
+                  <div class="list-template__locations-timeline">
+                  <span class="list-template__locations-address-icon">
+                    <i class="material-icons">location_on</i>
+                  </span>
+                    <div>
+                      <div>{{ load['origin']['locationAddress1'] }}, {{ load['origin']['cityName'] }}, {{ load['origin']['stateCode'] }}, {{ load['origin']['zipCode'] }}</div>
+                      <div>Pick Up: {{ formatDate(load['origin']['scheduledArrivalEarly']) }}</div>
+                    </div>
+                  </div>
 
-                <div class="list-template__locations-timeline">
-                <span class="list-template__locations-address-icon">
-                  <igx-icon name="location_on"></igx-icon>
-                </span>
-                  <div class="list-template__locations-address">
-                    <strong>{{ load['origin']['locationAddress1'] }}, {{ load['origin']['cityName'] }}, {{ load['origin']['stateCode'] }}, {{ load['origin']['zipCode'] }}</strong>
-                    <span>Pick Up: {{ formatDate(load['origin']['scheduledArrivalEarly']) }}</span>
+                  <div class="list-template__locations-timeline">
+                    <span class="list-template__locations-address-icon">
+                      <i class="material-icons">location_on</i>
+                    </span>
+                    <div>
+                      <div>{{ load['destination']['locationAddress1'] }}, {{ load['destination']['cityName'] }}, {{ load['destination']['stateCode'] }}, {{ load['destination']['zipCode'] }}</div>
+                      <div>Delivery: {{ formatDate(load['destination']['scheduledArrivalEarly']) }}</div>
+                    </div>
                   </div>
                 </div>
-
-                <div class="list-template__locations-timeline">
-              <span class="list-template__locations-address-icon">
-                <igx-icon name="location_on"></igx-icon>
-              </span>
-                  <div class="list-template__locations-address">
-                    <strong>{{ load['destination']['locationAddress1'] }}, {{ load['destination']['cityName'] }}, {{ load['destination']['stateCode'] }}, {{ load['destination']['zipCode'] }}</strong>
-                    <span>Delivery: {{ formatDate(load['destination']['scheduledArrivalEarly']) }}</span>
-                  </div>
-                </div>
-
-              </div>
 
               <div class="list-template__locations-labels">
                 <span class="list-template__locations-label" *ngFor="let label of [1, 2, 3, 4, 5, 6]; let i = index">label</span>
@@ -59,23 +57,19 @@
 
             </div>
 
-            <!-- Labels -->
             <table class="section list-template__table">
-              <!-- Buy now # -->
               <tr>
                 <th>Buy it now</th>
                 <th>label</th>
                 <th>label</th>
               </tr>
 
-              <!-- Label -->
               <tr>
                 <td>{{ load['dmpRate'] | currency }}</td>
                 <td><strong>Information</strong></td>
                 <td><strong>Information</strong></td>
               </tr>
 
-              <!-- Label -->
               <tr>
                 <td><strong>Information</strong></td>
                 <td><strong>Information</strong></td>
